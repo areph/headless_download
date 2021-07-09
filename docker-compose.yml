@@ -1,0 +1,17 @@
+version: '3.7'
+
+x-defaults: &defaults
+  build: .
+  environment:
+    TZ: Asia/Tokyo
+    EDITOR: vi
+    APP_PATH: /home/chrome
+services:
+  app:
+    <<: *defaults
+    volumes:
+      - .:/home/chrome
+    command: python3 app.py
+    environment:
+      - "DATABASE_HOST=db"
+
